@@ -4,6 +4,8 @@ const express = require('express');
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
 const PORT = 5000 || process.env.PORT;
+const db = require('./database/db');
+db();
 
 // Static folder
 app.use(express.static('public'));
