@@ -64,7 +64,7 @@ exports.exploreRecipe = async (req, res) => {
     }
 };
 
-// Search
+// SEARCH
 exports.search = async (req, res) => {
     try {
         let searchTerm = req.body.searchTerm;
@@ -72,7 +72,18 @@ exports.search = async (req, res) => {
         res.render('search', { title: 'Cooking Blog - Search', recipe});
     } 
     catch (error) {
-        console.log(error);
+        res.status(500).send({ message: error.message || 'An error occured.'});
+    }
+};
+
+// GET - EXPLORE LATEST RECIPES
+exports.exploreLatest = async (req, res) => {
+    try {
+        const latestRecipes = await Recipe.find({}).sort({ _id: -1});
+        res.render('explore-latest', { title: 'Cooking Blog - Latest Recipes', latestRecipes});
+    } 
+    catch (error) {
+        res.status(500).send({ message: error.message || 'An error occured.'});
     }
 };
 
