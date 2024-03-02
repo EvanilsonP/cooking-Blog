@@ -38,6 +38,18 @@ exports.exploreCategories = async (req, res) => {
     }
 };
 
+// GET - CATEGORIES:ID
+exports.exploreCategoriesById = async(req, res) => { 
+    try {
+        const categoryId = req.params.id;
+        const categoryById = await Recipe.find({ 'category': categoryId});
+        res.render('categories', { title: 'Cooking Blog - Categories', categoryById});
+    } 
+    catch (error) {
+        res.satus(500).send({message: error.message || "Error Occured" });
+    }
+} 
+
 // GET - RECIPE:ID
 exports.exploreRecipe = async (req, res) => {
     try {
@@ -51,6 +63,7 @@ exports.exploreRecipe = async (req, res) => {
         res.status(500).send({ message: error.message || 'An error occured.'});
     }
 };
+
 
 // async function insertDymmyRecipeData(){
 //   try {
