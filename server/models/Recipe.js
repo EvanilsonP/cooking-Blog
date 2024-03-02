@@ -35,5 +35,9 @@ const RecipeSchema = new mongoose.Schema({
   },
   
 });
+// So the search actually works // We want to search and return name and description, but it could be anything
+RecipeSchema.index({ name: 'text'});
+// Wildcard indexing 
+// RecipeSchema.index({ "$**": 'text'});
 
 module.exports = new mongoose.model('Recipe', RecipeSchema);

@@ -64,6 +64,18 @@ exports.exploreRecipe = async (req, res) => {
     }
 };
 
+// Search
+exports.search = async (req, res) => {
+    try {
+        let searchTerm = req.body.searchTerm;
+        const recipe = await Recipe.find({ $text: { $search: searchTerm, $diacriticSensitive: true }});
+        res.render('search', { title: 'Cooking Blog - Search', recipe});
+    } 
+    catch (error) {
+        console.log(error);
+    }
+};
+
 
 // async function insertDymmyRecipeData(){
 //   try {
