@@ -102,6 +102,11 @@ exports.exploreRandom = async (req, res) => {
     }
 };
 
+// SUBMIT RECIPE
+exports.recipeController = async (req, res) => {
+    
+};
+
 
 // async function insertDymmyRecipeData(){
 //   try {
@@ -263,4 +268,3 @@ exports.exploreRandom = async (req, res) => {
 // }
 
 // // insertDymmyRecipeData()
-
