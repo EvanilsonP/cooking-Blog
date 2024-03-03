@@ -103,8 +103,13 @@ exports.exploreRandom = async (req, res) => {
 };
 
 // SUBMIT RECIPE
-exports.recipeController = async (req, res) => {
-    
+exports.submitRecipe = async (req, res) => {
+    try {
+        res.render('submit-recipe');
+    } 
+    catch (error) {
+        res.status(500).send({ message: error.message || 'An error occured.'});
+    }
 };
 
 
