@@ -102,16 +102,24 @@ exports.exploreRandom = async (req, res) => {
     }
 };
 
-// SUBMIT RECIPE
+// GET - SUBMIT RECIPE PAGE
 exports.submitRecipe = async (req, res) => {
     try {
-        res.render('submit-recipe');
+        const infoErrorsObj = req.flash('infoErrors');
+        const infoSubmitObj = req.flash('infoSubmit');
+
+        res.render('submit-recipe', { title: 'Cooking Blog - Submit Recipe', infoErrorsObj, infoSubmitObj });
     } 
     catch (error) {
         res.status(500).send({ message: error.message || 'An error occured.'});
     }
 };
 
+// POST - SUBMIT RECIPE
+exports.submitRecipeOnPost = async (req, res) => {
+    req.flash('infoSubmit', 'Recipe has been added. ');
+    res.redirect('submit-recipe');
+};
 
 // async function insertDymmyRecipeData(){
 //   try {
