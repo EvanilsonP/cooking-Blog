@@ -117,8 +117,17 @@ exports.submitRecipe = async (req, res) => {
 
 // POST - SUBMIT RECIPE
 exports.submitRecipeOnPost = async (req, res) => {
-    req.flash('infoSubmit', 'Recipe has been added. ');
-    res.redirect('submit-recipe');
+    try {
+        const bodyData = req.body;
+        const recipe = new Recipe.create(bodyData);
+
+        req.flash('infoSubmit', 'Recipe has been added. ');
+        res.redirect('/submit-recipe');
+    } 
+    catch (error) {
+        req.flash('infoErrors', error);
+        res.redirect('/submit-recipe');
+    }
 };
 
 // async function insertDymmyRecipeData(){
