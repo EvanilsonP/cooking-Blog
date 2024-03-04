@@ -172,3 +172,15 @@ exports.submitRecipeOnPost = async (req, res) => {
 // };
 
 // updateRecipe();
+
+// Delete recipe locally
+// const deleteRecipe = async (req, res) => {
+//     try {
+//         await Recipe.deleteOne({ _id: ''});
+//     } 
+//     catch (error) {
+//         console.log(error);
+//     }
+// };
+
+// deleteRecipe();
